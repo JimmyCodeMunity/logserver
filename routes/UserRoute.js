@@ -8,7 +8,7 @@ router.use(express.json());
 router.use(express.urlencoded({extended:false}));
 
 
-router.get('/usersdata',getAllUsers);
+//router.get('/usersdata',getAllUsers);
 
 router.post('/login',Login);
 
