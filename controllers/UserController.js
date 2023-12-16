@@ -2,7 +2,7 @@ const express = require('express');
 const User = require('../models/UserModel');
 const bodyParser = require('body-parser');
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const getAllUsers = async (req, res) => {
     try {
