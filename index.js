@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Product = require('./models/ProductModel')
-//const User = require('./models/UserModel')
+const User = require('./models/UserModel')
 const productRoute = require('./routes/ProductRoute');
 const shopRoute = require('./routes/ShopRoutes');
-// const userRoute = require('./routes/UserRoute')
+const userRoute = require('./routes/UserRoute')
 
 
 
@@ -36,6 +36,7 @@ if(process.env.NODE_ENV !== 'PRODUCTION'){
 
 
   const port = process.env.PORT;
+  const DB = process.env.DBURL;
 
 app.listen(port,(req,res) => {
     console.log(`Server running on port ${port}`)
@@ -43,7 +44,7 @@ app.listen(port,(req,res) => {
 
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://Collo:Collo77@cluster0.bo6bwv7.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Failed to connect to MongoDB', err));
 //strict query
@@ -52,7 +53,7 @@ mongoose.set('strictQuery', true);
 
 
 app.use('/api/product', productRoute)
-// app.use('/api/user', userRoute)
+app.use('/api/user', userRoute)
 app.use('/api/shop',shopRoute);
 
 app.get('/',(req,res)=>{
