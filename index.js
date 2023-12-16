@@ -57,7 +57,7 @@ app.use('/api/user', userRoute)
 app.use('/api/shop',shopRoute);
 
 app.get('/',(req,res)=>{
-    res.send('Server started')
+    res.send('Login Server started')
 })
 
 app.get('/productlist',async (req,res)=>{
